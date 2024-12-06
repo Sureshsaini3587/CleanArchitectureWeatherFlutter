@@ -2,6 +2,8 @@ import 'package:clean_architecture/core/error/enum/client/client_exception_type.
 import 'package:clean_architecture/core/error/model/client_failure.dart';
 
 enum HomePageType {
+
+  dashboard,
   weather,
   weatherDetails,
   settings;

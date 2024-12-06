@@ -23,6 +23,10 @@ class AppIcons {
   static const IconData seaLevelPressureIcon = FontAwesomeIcons.anchor;
   static const IconData windSpeedIcon = FontAwesomeIcons.wind;
 
+  // Dashboard Icons
+  static const IconData dashboardIcon = FontAwesomeIcons.home;
+  static const IconData dashboardHomeIcon = FontAwesomeIcons.home;
+
 // General Icons
   static const IconData warningIcon = FontAwesomeIcons.triangleExclamation;
   static const IconData refreshIcon = FontAwesomeIcons.arrowsRotate;

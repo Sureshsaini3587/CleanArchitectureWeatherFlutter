@@ -15,13 +15,14 @@ class SettingsDrawer extends ConsumerWidget {
       padding: EdgeInsets.zero,
       children: <Widget>[
         const UserAccountsDrawerHeader(
+
           accountName: Text("Suresh Kumar Saini"),
           accountEmail: Text("suresh@example.com"),
           currentAccountPicture: CircleAvatar(
             backgroundColor: Colors.white,
             child: Icon(
               Icons.person,
-              size: 40,
+              size: 50,
               color: Colors.blue,
             ),
           ),

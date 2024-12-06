@@ -56,6 +56,13 @@ enum TextType {
   percentage('PERCENTAGE'),
   windSpeedMagnitude('WIND_SPEED_MAGNITUDE'),
   pressureMagnitude('PRESSURE_MAGNITUDE'),
+  dashboardHome('HOME'),
+  loan('LOAN'),
+  numberOfLoanAccount('COUNT_LOAN'),
+  fixedDeposit('FIXED_DEPOSIT'),
+  noOfFixedDeposit('COUNT_FIXED_DEPOSIT'),
+  recurringDeposit('RECURRING_DEPOSIT'),
+  noOfRecurringDeposit('COUNT_RECURRING_DEPOSIT'),
   noResultsFound('NO_RESULTS_FOUND');
 
   final String name;

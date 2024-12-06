@@ -114,6 +114,13 @@
         "PERCENTAGE": "%",
         "WIND_SPEED_MAGNITUDE": "m/s",
         "PRESSURE_MAGNITUDE": "hPA",
+        "HOME": "Home",
+        "LOAN": "Loans",
+        "COUNT_LOAN": "5",
+        "FIXED_DEPOSIT": "FD",
+        "COUNT_FIXED_DEPOSIT": "3",
+        "RECURRING_DEPOSIT": "RD",
+        "COUNT_RECURRING_DEPOSIT": "1",
         "NO_RESULTS_FOUND": "We couldn't find anyting :("
     }
 }

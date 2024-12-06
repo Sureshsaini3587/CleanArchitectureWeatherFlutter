@@ -5,28 +5,33 @@ import 'package:clean_architecture/core/widgets/model/advanced_border_model.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../router/extension/router_extension.dart';
+
 class AdvancedWeatherDetailsCard extends ConsumerWidget {
   final IconData icon;
   final String title;
   final String subtitle;
+  final String path;
 
-  const AdvancedWeatherDetailsCard({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-  });
+  const AdvancedWeatherDetailsCard(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.subtitle,
+      required this.path});
 
   /// Creates a copy of this class.
   AdvancedWeatherDetailsCard copyWith({
     IconData? icon,
     String? title,
     String? subtitle,
+    String? path,
   }) {
     return AdvancedWeatherDetailsCard(
       icon: icon ?? this.icon,
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
+      path: path ?? this.path,
     );
   }
 
@@ -40,14 +45,21 @@ class AdvancedWeatherDetailsCard extends ConsumerWidget {
       surfaceTintColor: context.appColors.transparentWidgetBackgroundColor,
       color: context.appColors.scaffoldBackgroundColor,
       margin: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _createIconWidget(context: context),
-          const SizedBox(height: 8.0),
-          _createTitleWidget(context: context),
-          _createSubtitleWidget(context: context),
-        ],
+      child: GestureDetector(
+        onTap: () {
+          debugPrint(path.toString());
+          RouterExtension.goRouter;
+          context.goRouter(path,context,);
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _createIconWidget(context: context),
+            const SizedBox(height: 8.0),
+            _createTitleWidget(context: context),
+            _createSubtitleWidget(context: context),
+          ],
+        ),
       ),
     );
   }
@@ -66,7 +78,10 @@ class AdvancedWeatherDetailsCard extends ConsumerWidget {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.titleLarge?.copyWith(color: context.appColors.transparentWidgetForegroundColor),
+      style: Theme.of(context)
+          .textTheme
+          .titleLarge
+          ?.copyWith(color: context.appColors.transparentWidgetForegroundColor),
     );
   }
 
@@ -75,7 +90,10 @@ class AdvancedWeatherDetailsCard extends ConsumerWidget {
     return Text(
       subtitle,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: context.appColors.transparentWidgetForegroundColor),
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium
+          ?.copyWith(color: context.appColors.transparentWidgetForegroundColor),
     );
   }
 }

@@ -2,6 +2,7 @@ enum RouterType {
   home('/', '/'),
   locationSettings('/location-settings', 'location-settings'),
   profileSettings('/profile-settings', 'profile-settings'),
+  accountList('account-list', 'account-list'),
   about('/about', '/about');
 
   final String absolutePath;

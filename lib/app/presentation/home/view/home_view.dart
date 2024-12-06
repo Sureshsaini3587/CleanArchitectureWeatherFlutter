@@ -21,6 +21,8 @@ import 'package:clean_architecture/core/widgets/model/advanced_navigation_rail_d
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../dashboard_details/view/weather_details_view.dart';
+
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
@@ -42,6 +44,8 @@ class HomeView extends ConsumerWidget {
               controller: homeViewState.pageController,
               onPageChanged: (index) async => await _onPageChanged(ref: ref, index: index),
               children: const <Widget>[
+
+                DashboardDetailsView(),
                 WeatherView(),
                 WeatherDetailsView(),
                 SettingsView(),
@@ -51,7 +55,7 @@ class HomeView extends ConsumerWidget {
         ],
       ),
       floatingActionButton: _createFloatingActionButton(homePageType: homeViewState.homePageType),
-      bottomNavigationBar: _getBottomNavigationBar(ref: ref, homePageType: homeViewState.homePageType),
+       bottomNavigationBar: _getBottomNavigationBar(ref: ref, homePageType: homeViewState.homePageType),
     );
   }
 
@@ -69,6 +73,7 @@ class HomeView extends ConsumerWidget {
   /// Creates a [FloatingActionButton].
   Widget? _createFloatingActionButton({required HomePageType homePageType}) {
     return switch (homePageType) {
+      HomePageType.dashboard => null,
       HomePageType.weather => const WeatherFloatingActionButton(),
       HomePageType.weatherDetails => null,
       HomePageType.settings => null,
@@ -78,6 +83,7 @@ class HomeView extends ConsumerWidget {
   /// Creates an [AppBar].
   Widget _getAppBar({required WidgetRef ref, required HomePageType homePageType}) {
     return switch (homePageType) {
+      HomePageType.dashboard =>  const WeatherDetailsAppBar(),
       HomePageType.weather => const WeatherAppBar(),
       HomePageType.weatherDetails => const WeatherDetailsAppBar(),
       HomePageType.settings => const SettingsAppBar(),
@@ -87,6 +93,7 @@ class HomeView extends ConsumerWidget {
   /// Creates an [Drawer].
   Widget _getDrawer({required WidgetRef ref, required HomePageType homePageType}) {
     return switch (homePageType) {
+      HomePageType.dashboard => const SettingsDrawer(),
       HomePageType.weather => const WeatherDrawer(),
       HomePageType.weatherDetails => const WeatherDetailsDrawer(),
       HomePageType.settings => const SettingsDrawer(),
@@ -103,6 +110,12 @@ class HomeView extends ConsumerWidget {
       currentIndex: homePageType.index,
       onTap: (index) async => await _onPageChanged(ref: ref, index: index),
       items: <AdvancedNavigationBarItemModel>[
+        AdvancedNavigationBarItemModel(
+          unselectedIcon: AppIcons.dashboardIcon,
+          selectedIcon: AppIcons.dashboardHomeIcon,
+          title: ref.translateText(textType: TextType.dashboardHome),
+          tooltip: ref.translateText(textType: TextType.dashboardHome),
+        ),
         AdvancedNavigationBarItemModel(
           unselectedIcon: AppIcons.weatherIcon,
           selectedIcon: AppIcons.weatherIcon,
