@@ -12,7 +12,6 @@ class HomeViewState {
     required this.pageController,
     required this.homePageType,
     required this.homePageScaffoldKey,
-
   });
 
   /// Creates a copy of this class.
